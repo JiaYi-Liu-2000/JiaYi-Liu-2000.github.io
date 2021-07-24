@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="John Doe"><meta name="renderer" content="webkit"><meta name="copyright" content="John Doe"><meta name="keywords" content="Hexo"><meta name="description" content=""><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>“计算机网络学习笔记” · Mr.Liu's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/touxiang.jpg"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">刘家义</div><div class="profile-signature">与其临渊羡鱼，不如退而结网。</div><div class="friends"><div>FRIENDS</div><span><a href="//https://github.com/JiaYi-Liu-2000" target="_black">friendA</a></span><span><a href="//github.com/" target="_black">friendB</a></span><span><a href="//github.com/" target="_black">friendC</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(img/intro/index-bg.jpg);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Liu's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">“计算机网络学习笔记”</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-calendar"></i><span>2021-07-21 20:17:30</span></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">1.7k</span> | Reading time: <span class="post-count">5</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="第一章-概述"><a href="#第一章-概述" class="headerlink" title="第一章 概述"></a>第一章 概述</h1><span id="more"></span>
+
+
+<h3 id="本章最重要内容是"><a href="#本章最重要内容是" class="headerlink" title="本章最重要内容是:"></a>本章最重要内容是:</h3><p>互联网边缘部分和核心部分的作用，以及分组交换的概念<br>计算机网络的性能指标<br>计算机网络的分层次的体系结构的概念，协议和服务的概念.</p>
+<h2 id="互联网概述"><a href="#互联网概述" class="headerlink" title="互联网概述"></a>互联网概述</h2><p>起源于美国的因特网现在是世界上最大的国际性计算机网络.<br>计算机网络(简称网络):由若干节点和连接这些节点的链路组成(节点可以是计算机，集线器，交换机，路由器等.）<br>网络和网络之间通过路由器连接起来，构成了互连网——即网络的网络<br>网络把许多计算机连接在一起,互联网把许多网络通过路由器连接在一起.</p>
+<h2 id="因特网发展的三个阶段"><a href="#因特网发展的三个阶段" class="headerlink" title="因特网发展的三个阶段"></a>因特网发展的三个阶段</h2><p>阶段一:单网络ARANET 互连网的发展过程,1969年美国国防部建立的第一个## 分组交换网. ##<br>阶段二:建成三级结构的因特网——主干网，地区网，校园网(或企业网)<br>阶段三:形成多层次IPS（因特网服务提供者）结构的因特网.</p>
+<h2 id="因特网交换点IXP"><a href="#因特网交换点IXP" class="headerlink" title="因特网交换点IXP"></a>因特网交换点IXP</h2><p>允许两个网络直接相连并交换分组，不需要其他网络来转发分组.（更快的转发分组，更有效地利用网络资源）</p>
+<p>IXP常采用工作在数据链路层的网络交换机，这些网络交换机都用局域网互连起来（典型的IXP由一个或多个网络交换机组成，）</p>
+<h2 id="互联网对标准化工作"><a href="#互联网对标准化工作" class="headerlink" title="互联网对标准化工作"></a>互联网对标准化工作</h2><p>互联网标准以RFC文档这种开放的方式存在<br>ISOC——因特网协会   IAB——因特网体系结构委员会<br>IETF-互联网工程部       IRTF-互联网研究部互联网组成</p>
+<h3 id="边缘部分"><a href="#边缘部分" class="headerlink" title="边缘部分:"></a>边缘部分:</h3><p>由所有连接在互联网上的主机,端系统(用户直接使用)<br>端系统之间的通信可以分为两种方式——客户/服务器方式（CS方式），对等方式（P2P方式）</p>
+<h3 id="核心部分"><a href="#核心部分" class="headerlink" title="核心部分:"></a>核心部分:</h3><p>由大量网络和连接这些网络对路由器组成.(为边缘部分提供服务)<br>向网络边缘部分的主机提供连通性服务，其核心部件是实现分组交换的路由器（用来转发分组）</p>
+<h2 id="互联网核心部分"><a href="#互联网核心部分" class="headerlink" title="互联网核心部分"></a>互联网核心部分</h2><p>电路交换:建立连接——通话——释放连接（两个用户在连接期间始终占用端到端的通信资源）（连接指专用的物理通道）<br>分组交换：存储转发，将报文（要发送的整块数据）划分为几个分组，利用相关控制信息进行分装为数据单元 ，然后进行转发(路由器转发分组,即分组交换)</p>
+<h2 id="计算机网络的类别"><a href="#计算机网络的类别" class="headerlink" title="计算机网络的类别"></a>计算机网络的类别</h2><h3 id="1-按照网络对作用范围进行分类"><a href="#1-按照网络对作用范围进行分类" class="headerlink" title="1.按照网络对作用范围进行分类"></a>1.按照网络对作用范围进行分类</h3><p>广域网WAN<br>城域网MAN<br>局域网LAN<br>个人区域网PAN</p>
+<h3 id="2-按照网络的使用者进行分类"><a href="#2-按照网络的使用者进行分类" class="headerlink" title="2.按照网络的使用者进行分类"></a>2.按照网络的使用者进行分类</h3><p>公用网<br>专用网</p>
+<h3 id="3-用来把用户接入到互联网的网络"><a href="#3-用来把用户接入到互联网的网络" class="headerlink" title="3.用来把用户接入到互联网的网络"></a>3.用来把用户接入到互联网的网络</h3><p>接入网</p>
+<h2 id="计算机网络对性能"><a href="#计算机网络对性能" class="headerlink" title="计算机网络对性能"></a>计算机网络对性能</h2><h3 id="速率"><a href="#速率" class="headerlink" title="速率:"></a>速率:</h3><p>连接在计算机网络上的主机在数字信道上传送数据位数的速率</p>
+<h3 id="单位"><a href="#单位" class="headerlink" title="单位:"></a>单位:</h3><p>b/s,Kb/s,Mb/s,Tb/s，如果用字节表示，则是B/s,KB/s,MB/s,TB/s,1Byte=8Bit</p>
+<h3 id="带宽"><a href="#带宽" class="headerlink" title="带宽:"></a>带宽:</h3><p>在计算机网络中，指的是网络设备所支持的最高速度，单位同速率，是理想条件下最高速率</p>
+<h3 id="吞吐量"><a href="#吞吐量" class="headerlink" title="吞吐量:"></a>吞吐量:</h3><p>指的是单位时间内通过某个网络的数据总量</p>
+<h3 id="时延"><a href="#时延" class="headerlink" title="时延:"></a>时延:</h3><p>      发送时延：发送端发送一个完整的数据帧所需要的时延<br>      传播时延：电磁波在信道中传播所需要的时间<br>      处理时延：主机或路由器处理数据分组时花费的时间<br>      排队时延：在路由器中等待分组时间</p>
+<p>时延带宽积:传播时延 *带宽=时延带宽积(意思是链路上有多少比特的数据)</p>
+<p>往返时延RTT:从发送方发送数据开始，到接收方确认收到为止所花费的时间<br>RTT=传播时延x2+处理时间(有时可能直接忽略)</p>
+<h3 id="利用率"><a href="#利用率" class="headerlink" title="利用率"></a>利用率</h3><p>信道利用率:信道利用率=有数据通过时间/有+无数据通过时间<br>网络利用率:网络利用率=所有信道利用率加权求平均值<br>时延和利用率的关系图</p>
+<p>利用率越高，延迟越大</p>
+<h2 id="计算机网络的体系结构"><a href="#计算机网络的体系结构" class="headerlink" title="计算机网络的体系结构"></a>计算机网络的体系结构</h2><p>系统网络体系结构SNA-IBM制定</p>
+<p>OSI标准-由国际标准化组织制定的网络标准，但在实际应用中被TCP/IP协议替代</p>
+<h3 id="为什么要分层，分层要做什么"><a href="#为什么要分层，分层要做什么" class="headerlink" title="为什么要分层，分层要做什么"></a>为什么要分层，分层要做什么</h3><p>（1）发起通信的计算机必须将数据通信的通路进行激活。<br>（2）要告诉网络如何识别目的主机。<br>（3）发起通信的计算机要查明目的主机是否开机，并且与网络连接正常。<br>（4）发起通信的计算机要弄清楚，对方计算机中文件管理程序是否已经做好准备工作。<br>（5）确保差错和意外可以解决。</p>
+<h2 id="正式认识分层结构"><a href="#正式认识分层结构" class="headerlink" title="正式认识分层结构"></a>正式认识分层结构</h2><h2 id="参考模型"><a href="#参考模型" class="headerlink" title="参考模型"></a>参考模型</h2><p> 名称    英文    作用<br>应用层    Application Layer    直接为用户的应用进程（例如电子邮件、文件传输和终端仿真）提供服务。如HTTP、SMTP、FTP、DNS等<br>表示层    Presentation Layer    把数据转换为能与接收者的系统格式兼容并适合传输的格式，即让两个系统可以交换信息<br>会话层    Session Layer    负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接<br>传输层    Transport Layer    负责端到端通讯，可靠传输，不可靠传输 ，流量控制，复用分用<br>网络层    Network Layer    负责选择路由最佳路径，规划IP地址(ipv4和ipv6变化只会影响网络层)，拥塞控制<br>数据链路层    Data Link Layer    帧的开始和结束，还有透明传输，差错校验(纠错由传输层解决)<br>物理层    Physical Layer    定义网络设备接口标准，电气标准(电压)，如何在物理链路上传输的更快</p>
+<h2 id="OSI流程简介"><a href="#OSI流程简介" class="headerlink" title="OSI流程简介"></a>OSI流程简介</h2><p>网络层及以上，每一层都要对上一层发送的数据进行处理（加个头部）<br>数据链路层不仅需要加头部，还需要加尾部<br>物理层什么都不加，只管发送数据（比特流）</p>
+<h2 id="TCP-IP参考模型"><a href="#TCP-IP参考模型" class="headerlink" title="TCP/IP参考模型"></a>TCP/IP参考模型</h2><h2 id="五层参考模型及其传输过程简介"><a href="#五层参考模型及其传输过程简介" class="headerlink" title="五层参考模型及其传输过程简介"></a>五层参考模型及其传输过程简介</h2><p>​</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">John Doe</a></p><p> <span>Link:  </span><a href="http://example.com/2021/07/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index/">http://example.com/2021/07/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2021/07/21/%E2%80%9CF0re5t%E5%B8%88%E5%82%85%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%BA%BF%E8%A7%84%E5%88%92%E4%BB%A5%E5%8F%8A%E8%A7%A3%E6%83%91%E2%80%9D/index/" title="“F0re5t师傅前端路线规划以及解惑”"><span>< PreviousPost</span><br><span class="prevTitle">“F0re5t师傅前端路线规划以及解惑”</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 70vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">第一章 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E7%AB%A0%E6%9C%80%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9%E6%98%AF"><span class="toc-number">1.0.1.</span> <span class="toc-text">本章最重要内容是:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E8%81%94%E7%BD%91%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">互联网概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E5%8F%91%E5%B1%95%E7%9A%84%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="toc-number">1.2.</span> <span class="toc-text">因特网发展的三个阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E4%BA%A4%E6%8D%A2%E7%82%B9IXP"><span class="toc-number">1.3.</span> <span class="toc-text">因特网交换点IXP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E8%81%94%E7%BD%91%E5%AF%B9%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.4.</span> <span class="toc-text">互联网对标准化工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%B9%E7%BC%98%E9%83%A8%E5%88%86"><span class="toc-number">1.4.1.</span> <span class="toc-text">边缘部分:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E9%83%A8%E5%88%86"><span class="toc-number">1.4.2.</span> <span class="toc-text">核心部分:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E8%81%94%E7%BD%91%E6%A0%B8%E5%BF%83%E9%83%A8%E5%88%86"><span class="toc-number">1.5.</span> <span class="toc-text">互联网核心部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E7%B1%BB%E5%88%AB"><span class="toc-number">1.6.</span> <span class="toc-text">计算机网络的类别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8C%89%E7%85%A7%E7%BD%91%E7%BB%9C%E5%AF%B9%E4%BD%9C%E7%94%A8%E8%8C%83%E5%9B%B4%E8%BF%9B%E8%A1%8C%E5%88%86%E7%B1%BB"><span class="toc-number">1.6.1.</span> <span class="toc-text">1.按照网络对作用范围进行分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8C%89%E7%85%A7%E7%BD%91%E7%BB%9C%E7%9A%84%E4%BD%BF%E7%94%A8%E8%80%85%E8%BF%9B%E8%A1%8C%E5%88%86%E7%B1%BB"><span class="toc-number">1.6.2.</span> <span class="toc-text">2.按照网络的使用者进行分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%94%A8%E6%9D%A5%E6%8A%8A%E7%94%A8%E6%88%B7%E6%8E%A5%E5%85%A5%E5%88%B0%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E7%BD%91%E7%BB%9C"><span class="toc-number">1.6.3.</span> <span class="toc-text">3.用来把用户接入到互联网的网络</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AF%B9%E6%80%A7%E8%83%BD"><span class="toc-number">1.7.</span> <span class="toc-text">计算机网络对性能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9F%E7%8E%87"><span class="toc-number">1.7.1.</span> <span class="toc-text">速率:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%BD%8D"><span class="toc-number">1.7.2.</span> <span class="toc-text">单位:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%AE%BD"><span class="toc-number">1.7.3.</span> <span class="toc-text">带宽:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%9E%E5%90%90%E9%87%8F"><span class="toc-number">1.7.4.</span> <span class="toc-text">吞吐量:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E5%BB%B6"><span class="toc-number">1.7.5.</span> <span class="toc-text">时延:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E7%8E%87"><span class="toc-number">1.7.6.</span> <span class="toc-text">利用率</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">1.8.</span> <span class="toc-text">计算机网络的体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%86%E5%B1%82%EF%BC%8C%E5%88%86%E5%B1%82%E8%A6%81%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-number">1.8.1.</span> <span class="toc-text">为什么要分层，分层要做什么</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%BC%8F%E8%AE%A4%E8%AF%86%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84"><span class="toc-number">1.9.</span> <span class="toc-text">正式认识分层结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.10.</span> <span class="toc-text">参考模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSI%E6%B5%81%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="toc-number">1.11.</span> <span class="toc-text">OSI流程简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.12.</span> <span class="toc-text">TCP&#x2F;IP参考模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%B1%82%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E5%8F%8A%E5%85%B6%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="toc-number">1.13.</span> <span class="toc-text">五层参考模型及其传输过程简介</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

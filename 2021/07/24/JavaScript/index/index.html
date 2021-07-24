@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="John Doe"><meta name="renderer" content="webkit"><meta name="copyright" content="John Doe"><meta name="keywords" content="Hexo"><meta name="description" content=""><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>“JavaScript” · Mr.Liu's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/touxiang.jpg"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">刘家义</div><div class="profile-signature">与其临渊羡鱼，不如退而结网。</div><div class="friends"><div>FRIENDS</div><span><a href="//https://github.com/JiaYi-Liu-2000" target="_black">friendA</a></span><span><a href="//github.com/" target="_black">friendB</a></span><span><a href="//github.com/" target="_black">friendC</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(img/intro/index-bg.jpg);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Liu's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">“JavaScript”</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-calendar"></i><span>2021-07-24 14:17:30</span></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">963</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="（一）初识JS"><a href="#（一）初识JS" class="headerlink" title="（一）初识JS"></a>（一）初识JS</h1><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="JavaScript历史"><a href="#JavaScript历史" class="headerlink" title="JavaScript历史"></a>JavaScript历史</h2><p>布兰登艾奇（Brendan Eich， 1961年～）。 神奇的大哥在1995年利用10天完成JavaScript设计。 网景公司最初命名为LiveScript ，后来在与Sun合作之后将其改名为JavaScript.</p>
+<h2 id="JavaScript是什么"><a href="#JavaScript是什么" class="headerlink" title="JavaScript是什么"></a>JavaScript是什么</h2><p>lavaScript是世界上最流行的语言之一，是一种运行在客户端的脚本语言（Script是脚本的意思）脚本语言：不需要编译，运行过程中由js解释器（js引擎）逐行来进行解释并执行。 现在也可以基于Nodejs技术进行服务器端编程</p>
+<h2 id="JavaScript的作用"><a href="#JavaScript的作用" class="headerlink" title="JavaScript的作用"></a>JavaScript的作用</h2><ul>
+<li>表单动态校验（密码强度检测） （ JS产生最初的目的）</li>
+<li>网页特效</li>
+<li>服务端开发（Node.js）</li>
+<li>桌面程序（Electron）</li>
+<li>App(Cordova)</li>
+<li>控制硬件—物联网（Ruff游戏F发(cocos2d-js)</li>
+</ul>
+<h2 id="浏览器执行JS简介"><a href="#浏览器执行JS简介" class="headerlink" title="浏览器执行JS简介"></a>浏览器执行JS简介</h2><p>浏览器分成两部分：==渲染引擎和JS引擎==</p>
+<ul>
+<li><p>渲染引擎：用来解析HTML与CSS ，俗称内核，比如chrome浏览器的blink ，老版本的webkit</p>
+</li>
+<li><p>JS引擎：也称为JS解释器。用来读取网页中的JavaScript代码，对其处理后运行，比如chrome浏览器的V8</p>
+</li>
+</ul>
+<p>浏览器本身并不会执行JS代码，而是通过内置JavaScript引擎（解释器）来执行JS代码。JS引擎执行代码时逐行解释每一句源码（转换为机器语言） ，然后由计算机去执行，所以JavaScript语言归为脚本语言，会逐行解释执行。</p>
+<h2 id="JS三大组成"><a href="#JS三大组成" class="headerlink" title="JS三大组成"></a>JS三大组成</h2><ul>
+<li></li>
+<li>ECMAScript</li>
+<li>DOM</li>
+<li>BOM</li>
+</ul>
+<h4 id="-1"><a href="#-1" class="headerlink" title=""></a></h4><h3 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h3><p>ECMAScript是由ECMA国际（原欧洲计算机制造商协会）进行标准化的一门编程语言，这种语言在万维网上应用广 泛，它往往被称为JavaScript或JScript ，但实际上后两者是ECMAScript语言的实现和扩展。</p>
+<p> ECMAScript </p>
+<ul>
+<li>lavaScript 网景公司</li>
+<li>Jscript 微软公司<br>ECMAScript ： ==ECMAScript规定了JS的编程语法和基础核心知识，是所有浏览器厂商共同遵守的一套JS语法工业标准。==</li>
+</ul>
+<h3 id="DOM—文档对象模型"><a href="#DOM—文档对象模型" class="headerlink" title="DOM—文档对象模型"></a>DOM—文档对象模型</h3><p>文档对象模型（ Document Object Model ，简称DOM ） ，是W3C组织推荐的处理可扩展标记语言的标准编程接口通过DOM提供的接口可以对页面上的各种元素进行操作（大小、位置、颜色等）。</p>
+<h3 id="BOM—浏览器对象模型"><a href="#BOM—浏览器对象模型" class="headerlink" title="BOM—浏览器对象模型"></a>BOM—浏览器对象模型</h3><p>浏览器对象模型 （Browser Object Model ，简称BOM）是指浏览器对象模型，它提供了独立于内容的、可以与浏览器窗口进行互动的对象结构。通过BOM可以操作浏览器窗口，比如弹出框、控制浏览器跳转、获取分辨率等。</p>
+<h2 id="JS-初体验"><a href="#JS-初体验" class="headerlink" title="JS 初体验"></a>JS 初体验</h2><p>JS有3种书写位置，分别为行内、内嵌和外部</p>
+<p>1.行内式JS</p>
+<pre><code>&lt;input type=&quot;button&quot; value=&quot;click&quot; onclick=&quot;Hello, world!&quot;&gt;
+</code></pre>
+<ul>
+<li><p>可以将单行或少量JS代码写在HTML标签的事件属性中（以on开头的属性） ，如： onclick</p>
+</li>
+<li><p>注意单双引号的使用：在HEML中我们推荐使用双引号，JS中我们推荐使用单引号。</p>
+</li>
+<li><p>可读性差，在html中编写JS大量代码时，不方便阅读；引号易错，引号多层嵌套匹配时，非常容易弄混；</p>
+</li>
+<li><p>特殊情况下使用</p>
+</li>
+</ul>
+<p>2.内嵌式</p>
+<pre><code>&lt;script&gt;
+alert(&quot;Hello world!&quot;);
+&lt;/script&gt;
+</code></pre>
+<p>学习时常用</p>
+<p>3.外部js文件<br>    <script src="newFile.js"></script></p>
+<ul>
+<li>利于HTML页面代码结构化，把大段JS代码独立到HTML页面之外，既美观，也方便文件级别的复用</li>
+<li>引用外部JS文件的script标签中间不可写代码</li>
+<li>适合于JS代码量比较大的情况</li>
+</ul>
+<h2 id="JS-注释"><a href="#JS-注释" class="headerlink" title="JS 注释"></a>JS 注释</h2><p>1.单行注释</p>
+<pre><code>// 单行注释
+</code></pre>
+<p>2.多行注释</p>
+<pre><code>/*
+多行注释
+*/
+</code></pre>
+<h2 id="JS输入输出语句"><a href="#JS输入输出语句" class="headerlink" title="JS输入输出语句"></a>JS输入输出语句</h2><p>1.输入框<br><code>prompt</code> 方法返回一个 <code>string</code> 类型。<br>     prompt(‘请输入你的名字：’);</p>
+<p>2.警示框    </p>
+<pre><code>alert(&#39;你好&#39;);
+</code></pre>
+<p>3.控制台打印</p>
+<pre><code>console.log(&#39;我是程序员能看到的。&#39;);
+</code></pre>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">John Doe</a></p><p> <span>Link:  </span><a href="http://example.com/2021/07/24/JavaScript/index/">http://example.com/2021/07/24/JavaScript/index/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2021/07/21/Markdown%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/index/" title="“Markdown语法大全”"><span>NextPost ></span><br><span class="nextTitle">“Markdown语法大全”</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 70vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%88%9D%E8%AF%86JS"><span class="toc-number">1.</span> <span class="toc-text">（一）初识JS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.0.1.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript%E5%8E%86%E5%8F%B2"><span class="toc-number">1.1.</span> <span class="toc-text">JavaScript历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.2.</span> <span class="toc-text">JavaScript是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">JavaScript的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A7%E8%A1%8CJS%E7%AE%80%E4%BB%8B"><span class="toc-number">1.4.</span> <span class="toc-text">浏览器执行JS简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS%E4%B8%89%E5%A4%A7%E7%BB%84%E6%88%90"><span class="toc-number">1.5.</span> <span class="toc-text">JS三大组成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#-1"><span class="toc-number">1.5.0.1.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ECMAScript"><span class="toc-number">1.5.1.</span> <span class="toc-text">ECMAScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM%E2%80%94%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.2.</span> <span class="toc-text">DOM—文档对象模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BOM%E2%80%94%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.3.</span> <span class="toc-text">BOM—浏览器对象模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS-%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="toc-number">1.6.</span> <span class="toc-text">JS 初体验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS-%E6%B3%A8%E9%87%8A"><span class="toc-number">1.7.</span> <span class="toc-text">JS 注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.8.</span> <span class="toc-text">JS输入输出语句</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
