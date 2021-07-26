@@ -1,103 +1,228 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="John Doe"><meta name="renderer" content="webkit"><meta name="copyright" content="John Doe"><meta name="keywords" content="Hexo"><meta name="description" content=""><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>“JavaScript” · Mr.Liu's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
-  "use strict";
-  // rel=preload support test
-  if( !w.loadCSS ){
-    w.loadCSS = function(){};
-  }
-  // define on the loadCSS obj
-  var rp = loadCSS.relpreload = {};
-  // rel=preload feature support test
-  // runs once and returns a function for compat purposes
-  rp.support = (function(){
-    var ret;
-    try {
-      ret = w.document.createElement( "link" ).relList.supports( "preload" );
-    } catch (e) {
-      ret = false;
-    }
-    return function(){
-      return ret;
-    };
-  })();
-
-  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
-  // then change that media back to its intended value on load
-  rp.bindMediaToggle = function( link ){
-    // remember existing media attr for ultimate state, or default to 'all'
-    var finalMedia = link.media || "all";
-
-    function enableStylesheet(){
-      link.media = finalMedia;
-    }
-
-    // bind load handlers to enable media
-    if( link.addEventListener ){
-      link.addEventListener( "load", enableStylesheet );
-    } else if( link.attachEvent ){
-      link.attachEvent( "onload", enableStylesheet );
-    }
-
-    // Set rel and non-applicable media type to start an async request
-    // note: timeout allows this to happen async to let rendering continue in IE
-    setTimeout(function(){
-      link.rel = "stylesheet";
-      link.media = "only x";
-    });
-    // also enable media after 3 seconds,
-    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
-    setTimeout( enableStylesheet, 3000 );
-  };
-
-  // loop through link elements in DOM
-  rp.poly = function(){
-    // double check this to prevent external calls from running
-    if( rp.support() ){
-      return;
-    }
-    var links = w.document.getElementsByTagName( "link" );
-    for( var i = 0; i < links.length; i++ ){
-      var link = links[ i ];
-      // qualify links to those with rel=preload and as=style attrs
-      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
-        // prevent rerunning on link
-        link.setAttribute( "data-loadcss", true );
-        // bind listeners to toggle media back
-        rp.bindMediaToggle( link );
-      }
-    }
-  };
-
-  // if unsupported, run the polyfill
-  if( !rp.support() ){
-    // run once at least
-    rp.poly();
-
-    // rerun poly on an interval until onload
-    var run = w.setInterval( rp.poly, 500 );
-    if( w.addEventListener ){
-      w.addEventListener( "load", function(){
-        rp.poly();
-        w.clearInterval( run );
-      } );
-    } else if( w.attachEvent ){
-      w.attachEvent( "onload", function(){
-        rp.poly();
-        w.clearInterval( run );
-      } );
-    }
-  }
+<!DOCTYPE html>
+<html lang="default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
 
 
-  // commonjs
-  if( typeof exports !== "undefined" ){
-    exports.loadCSS = loadCSS;
-  }
-  else {
-    w.loadCSS = loadCSS;
-  }
-}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 5.4.0"></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/touxiang.jpg"></div><!--.profile-saying
-  i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">刘家义</div><div class="profile-signature">与其临渊羡鱼，不如退而结网。</div><div class="friends"><div>FRIENDS</div><span><a href="//https://github.com/JiaYi-Liu-2000" target="_black">friendA</a></span><span><a href="//github.com/" target="_black">friendB</a></span><span><a href="//github.com/" target="_black">friendC</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(img/intro/index-bg.jpg);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Liu's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">“JavaScript”</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-calendar"></i><span>2021-07-24 14:17:30</span></span></div><div class="post-intro-read"><span> Word count: <span class="post-count">963</span> | Reading time: <span class="post-count">3</span>min</span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h1 id="（一）初识JS"><a href="#（一）初识JS" class="headerlink" title="（一）初识JS"></a>（一）初识JS</h1><h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="JavaScript历史"><a href="#JavaScript历史" class="headerlink" title="JavaScript历史"></a>JavaScript历史</h2><p>布兰登艾奇（Brendan Eich， 1961年～）。 神奇的大哥在1995年利用10天完成JavaScript设计。 网景公司最初命名为LiveScript ，后来在与Sun合作之后将其改名为JavaScript.</p>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Suche...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="（一）初识JSJavaScript历史布兰登艾奇（Brendan Eich， 1961年～）。 神奇的大哥在1995年利用10天完成JavaScript设计。 网景公司最初命名为LiveScript ，后来在与Sun合作之后将其改名为JavaScript.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“JavaScript”">
+<meta property="og:url" content="http://example.com/2021/07/24/JavaScript/index/index.html">
+<meta property="og:site_name" content="Mr.Liu&#39;s Blog">
+<meta property="og:description" content="（一）初识JSJavaScript历史布兰登艾奇（Brendan Eich， 1961年～）。 神奇的大哥在1995年利用10天完成JavaScript设计。 网景公司最初命名为LiveScript ，后来在与Sun合作之后将其改名为JavaScript.">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-07-24T06:17:30.000Z">
+<meta property="article:modified_time" content="2021-07-26T04:08:01.637Z">
+<meta property="article:author" content="������">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/07/24/JavaScript/index/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"default","comments":true,"permalink":"http://example.com/2021/07/24/JavaScript/index/","path":"2021/07/24/JavaScript/index/","title":"“JavaScript”"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>“JavaScript” | Mr.Liu's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Navigationsleiste an/ausschalten" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Mr.Liu's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Inhaltsverzeichnis
+        </li>
+        <li class="sidebar-nav-overview">
+          Übersicht
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%88%9D%E8%AF%86JS"><span class="nav-number">1.</span> <span class="nav-text">（一）初识JS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E5%8E%86%E5%8F%B2"><span class="nav-number">1.1.</span> <span class="nav-text">JavaScript历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.2.</span> <span class="nav-text">JavaScript是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">JavaScript的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A7%E8%A1%8CJS%E7%AE%80%E4%BB%8B"><span class="nav-number">1.4.</span> <span class="nav-text">浏览器执行JS简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E4%B8%89%E5%A4%A7%E7%BB%84%E6%88%90"><span class="nav-number">1.5.</span> <span class="nav-text">JS三大组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMAScript"><span class="nav-number">1.5.1.</span> <span class="nav-text">ECMAScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM%E2%80%94%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.5.2.</span> <span class="nav-text">DOM—文档对象模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BOM%E2%80%94%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.5.3.</span> <span class="nav-text">BOM—浏览器对象模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="nav-number">1.6.</span> <span class="nav-text">JS 初体验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-%E6%B3%A8%E9%87%8A"><span class="nav-number">1.7.</span> <span class="nav-text">JS 注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.8.</span> <span class="nav-text">JS输入输出语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">（二）变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9E%E8%B4%A8"><span class="nav-number">2.1.</span> <span class="nav-text">变量的实质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="nav-number">2.2.</span> <span class="nav-text">变量的声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F"><span class="nav-number">2.3.</span> <span class="nav-text">声明变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.4.</span> <span class="nav-text">变量的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E8%B5%8B%E5%80%BC"><span class="nav-number">2.5.</span> <span class="nav-text">更新赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E5%A3%B0%E6%98%8E%E5%A4%9A%E4%B8%AA%E5%8F%98%E9%87%8F"><span class="nav-number">2.6.</span> <span class="nav-text">同时声明多个变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E4%B8%8D%E8%B5%8B%E5%80%BC"><span class="nav-number">2.7.</span> <span class="nav-text">声明不赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E8%BE%93%E5%87%BA"><span class="nav-number">2.8.</span> <span class="nav-text">直接输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%A3%B0%E6%98%8E%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC"><span class="nav-number">2.9.</span> <span class="nav-text">不声明直接赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="nav-number">2.10.</span> <span class="nav-text">命名规范</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">（三）数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">数据类型概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.1.</span> <span class="nav-text">为什么需要数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.2.</span> <span class="nav-text">变量的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.3.</span> <span class="nav-text">简单数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%89"><span class="nav-number">3.1.4.</span> <span class="nav-text">简单数据类型（基本数据类型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9E%8B-Number"><span class="nav-number">3.1.5.</span> <span class="nav-text">数字型 Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9E%8B%E8%BF%9B%E5%88%B6"><span class="nav-number">3.1.5.1.</span> <span class="nav-text">数字型进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9E%8B%E8%8C%83%E5%9B%B4"><span class="nav-number">3.1.5.2.</span> <span class="nav-text">数字型范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%80%BC"><span class="nav-number">3.1.5.3.</span> <span class="nav-text">特殊值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isNaN"><span class="nav-number">3.1.5.4.</span> <span class="nav-text">isNaN()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9E%8B-String"><span class="nav-number">3.1.6.</span> <span class="nav-text">字符串型 String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">3.1.6.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BC%95%E5%8F%B7%E5%B5%8C%E5%A5%97"><span class="nav-number">3.1.6.2.</span> <span class="nav-text">字符串引号嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E4%B9%89%E7%AC%A6"><span class="nav-number">3.1.6.3.</span> <span class="nav-text">字符串转义符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6-length"><span class="nav-number">3.1.6.4.</span> <span class="nav-text">获取字符串长度 length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="nav-number">3.1.6.5.</span> <span class="nav-text">字符串拼接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5%E5%8A%A0%E5%BC%BA"><span class="nav-number">3.1.6.6.</span> <span class="nav-text">字符串拼接加强</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E5%9E%8B-Boolean"><span class="nav-number">3.1.7.</span> <span class="nav-text">布尔型 Boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Undefined"><span class="nav-number">3.1.8.</span> <span class="nav-text">Undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E5%80%BC-Null"><span class="nav-number">3.1.9.</span> <span class="nav-text">空值 Null</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">获取变量数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof-%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.1.</span> <span class="nav-text">typeof 获取变量数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="nav-number">3.2.2.</span> <span class="nav-text">字面量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">数据类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.3.1.</span> <span class="nav-text">什么是数据类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">3.3.2.</span> <span class="nav-text">转换成字符串的三种方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97%E5%9E%8B"><span class="nav-number">3.3.3.</span> <span class="nav-text">转换为数字型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B8%83%E5%B0%94%E5%9E%8B"><span class="nav-number">3.3.4.</span> <span class="nav-text">转换为布尔型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6%E3%80%81%E5%85%B3%E9%94%AE%E5%AD%97%E3%80%81%E4%BF%9D%E7%95%99%E5%AD%97"><span class="nav-number">3.4.</span> <span class="nav-text">标识符、关键字、保留字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-number">3.4.1.</span> <span class="nav-text">标识符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.4.2.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%9D%E7%95%99%E5%AD%97"><span class="nav-number">3.4.3.</span> <span class="nav-text">保留字</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">������</p>
+  <div class="site-description" itemprop="description">��¼ѧϰ ��¼�ɳ�</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">Artikel</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="default">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/24/JavaScript/index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="������">
+      <meta itemprop="description" content="��¼ѧϰ ��¼�ɳ�">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Liu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          “JavaScript”
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Veröffentlicht am</span>
+
+      <time title="Erstellt: 2021-07-24 14:17:30" itemprop="dateCreated datePublished" datetime="2021-07-24T14:17:30+08:00">2021-07-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Bearbeitet am</span>
+        <time title="Geändert am: 2021-07-26 12:08:01" itemprop="dateModified" datetime="2021-07-26T12:08:01+08:00">2021-07-26</time>
+      </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="Symbole im Artikel gezählt">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbole im Artikel gezählt: </span>
+      <span>6.9k</span>
+    </span>
+    <span class="post-meta-item" title="Lesezeit">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Lesezeit &asymp;</span>
+      <span>6 minuten.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="（一）初识JS"><a href="#（一）初识JS" class="headerlink" title="（一）初识JS"></a>（一）初识JS</h1><h2 id="JavaScript历史"><a href="#JavaScript历史" class="headerlink" title="JavaScript历史"></a>JavaScript历史</h2><p>布兰登艾奇（Brendan Eich， 1961年～）。 神奇的大哥在1995年利用10天完成JavaScript设计。 网景公司最初命名为LiveScript ，后来在与Sun合作之后将其改名为JavaScript.</p>
 <span id="more"></span>
 <h2 id="JavaScript是什么"><a href="#JavaScript是什么" class="headerlink" title="JavaScript是什么"></a>JavaScript是什么</h2><p>lavaScript是世界上最流行的语言之一，是一种运行在客户端的脚本语言（Script是脚本的意思）脚本语言：不需要编译，运行过程中由js解释器（js引擎）逐行来进行解释并执行。 现在也可以基于Nodejs技术进行服务器端编程</p>
 <h2 id="JavaScript的作用"><a href="#JavaScript的作用" class="headerlink" title="JavaScript的作用"></a>JavaScript的作用</h2><ul>
@@ -122,7 +247,7 @@
 <li>DOM</li>
 <li>BOM</li>
 </ul>
-<h4 id="-1"><a href="#-1" class="headerlink" title=""></a></h4><h3 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h3><p>ECMAScript是由ECMA国际（原欧洲计算机制造商协会）进行标准化的一门编程语言，这种语言在万维网上应用广 泛，它往往被称为JavaScript或JScript ，但实际上后两者是ECMAScript语言的实现和扩展。</p>
+<h3 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h3><p>ECMAScript是由ECMA国际（原欧洲计算机制造商协会）进行标准化的一门编程语言，这种语言在万维网上应用广 泛，它往往被称为JavaScript或JScript ，但实际上后两者是ECMAScript语言的实现和扩展。</p>
 <p> ECMAScript </p>
 <ul>
 <li>lavaScript 网景公司</li>
@@ -171,4 +296,369 @@ alert(&quot;Hello world!&quot;);
 <p>3.控制台打印</p>
 <pre><code>console.log(&#39;我是程序员能看到的。&#39;);
 </code></pre>
-</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">John Doe</a></p><p> <span>Link:  </span><a href="http://example.com/2021/07/24/JavaScript/index/">http://example.com/2021/07/24/JavaScript/index/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2021/07/21/Markdown%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/index/" title="“Markdown语法大全”"><span>NextPost ></span><br><span class="nextTitle">“Markdown语法大全”</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 70vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%88%9D%E8%AF%86JS"><span class="toc-number">1.</span> <span class="toc-text">（一）初识JS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.0.1.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript%E5%8E%86%E5%8F%B2"><span class="toc-number">1.1.</span> <span class="toc-text">JavaScript历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.2.</span> <span class="toc-text">JavaScript是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">JavaScript的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A7%E8%A1%8CJS%E7%AE%80%E4%BB%8B"><span class="toc-number">1.4.</span> <span class="toc-text">浏览器执行JS简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS%E4%B8%89%E5%A4%A7%E7%BB%84%E6%88%90"><span class="toc-number">1.5.</span> <span class="toc-text">JS三大组成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#-1"><span class="toc-number">1.5.0.1.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ECMAScript"><span class="toc-number">1.5.1.</span> <span class="toc-text">ECMAScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM%E2%80%94%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.2.</span> <span class="toc-text">DOM—文档对象模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BOM%E2%80%94%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.5.3.</span> <span class="toc-text">BOM—浏览器对象模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS-%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="toc-number">1.6.</span> <span class="toc-text">JS 初体验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS-%E6%B3%A8%E9%87%8A"><span class="toc-number">1.7.</span> <span class="toc-text">JS 注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.8.</span> <span class="toc-text">JS输入输出语句</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+<hr>
+<h1 id="（二）变量"><a href="#（二）变量" class="headerlink" title="（二）变量"></a>（二）变量</h1><h2 id="变量的实质"><a href="#变量的实质" class="headerlink" title="变量的实质"></a>变量的实质</h2><p>变量是程序在内存中申请的一块用来存放数据的空间。</p>
+<h2 id="变量的声明"><a href="#变量的声明" class="headerlink" title="变量的声明"></a>变量的声明</h2><p>1.声明变量<br>2.赋值</p>
+<h2 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h2><pre><code>// 声明一个叫age的变量
+var age;
+let name;
+const PI = 3.14;
+</code></pre>
+<ul>
+<li>var 是一个JS关键字，用来声明变量（variable变量的意思），使用该关键字声明变量后，计算机会自动为变量分配内存空间，不需要程序员管</li>
+<li>age 是程序员定义的变量名，我们要通过变量名来访问内存中分配的空间</li>
+</ul>
+<h2 id="变量的初始化"><a href="#变量的初始化" class="headerlink" title="变量的初始化"></a>变量的初始化</h2><pre><code>var age = 18;
+</code></pre>
+<p>初始化：声明并赋值</p>
+<h2 id="更新赋值"><a href="#更新赋值" class="headerlink" title="更新赋值"></a>更新赋值</h2><p>一个变量可以被重复赋值，变量值也会更新。</p>
+<pre><code>var age = 18;
+age = 81;
+</code></pre>
+<h2 id="同时声明多个变量"><a href="#同时声明多个变量" class="headerlink" title="同时声明多个变量"></a>同时声明多个变量</h2><pre><code>var age = 18,
+url = &#39;https://jiayi-liu-2000.github.io/&#39;,
+myname = &#39;liujiayi&#39;
+</code></pre>
+<h2 id="声明不赋值"><a href="#声明不赋值" class="headerlink" title="声明不赋值"></a>声明不赋值</h2><pre><code>var sex;
+console.log(sex);
+// undefined
+console.log(aaa);
+</code></pre>
+<h2 id="直接输出"><a href="#直接输出" class="headerlink" title="直接输出"></a>直接输出</h2><pre><code>console.log(tel);
+// 报错
+</code></pre>
+<h2 id="不声明直接赋值"><a href="#不声明直接赋值" class="headerlink" title="不声明直接赋值"></a>不声明直接赋值</h2><pre><code>qq = 12345;
+console.log(qq);
+// 12345 全局变量
+</code></pre>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><ul>
+<li>由字母（A—Za—z）、数字（0—9）、下划线（）、美元符号（5）组成，如： usrAge， num01， name</li>
+<li>严格区分大小写。var app；和var App；是两个变量</li>
+<li>不能以数字开头。18age是错误的</li>
+<li>不能是关键字、保留字。例如： var， for， while</li>
+<li>变量名必须有意义。MMD BBD nl— age</li>
+<li>遵守驼峰命名法。首字母小写，后面单词的首字母需要大写。myFirstName推荐翻译网站：有道爱词霸</li>
+<li>尽量不要使用 name 作为变量名</li>
+</ul>
+<hr>
+<h1 id="（三）数据类型"><a href="#（三）数据类型" class="headerlink" title="（三）数据类型"></a>（三）数据类型</h1><h2 id="数据类型概述"><a href="#数据类型概述" class="headerlink" title="数据类型概述"></a>数据类型概述</h2><h3 id="为什么需要数据类型"><a href="#为什么需要数据类型" class="headerlink" title="为什么需要数据类型"></a>为什么需要数据类型</h3><p>在计算机中，不同的数据所需占用的存储空间是不同的，为了便于把数据分成所需内存大小不同的数据，充分利用存储空间，于是定义了不同的数据类型。</p>
+<p>简单来说，数据类型就是数据的类别型号。比如姓名“张三” ，年龄18，这些数据的类型是不一样的。</p>
+<h3 id="变量的数据类型"><a href="#变量的数据类型" class="headerlink" title="变量的数据类型"></a>变量的数据类型</h3><p>变量是用来存储值的所在处，它们有名字和数据类型。变量的数据类型决定了如何将代表这些值的位存储到计算机的内存中。==JavaScript是一种弱类型或者说动态语言==。这意味着不用提前声明变量的类型，在程序运行过程中，类型会被自动确定。</p>
+<pre><code>var age = 10;
+//这是一个数字型var arerouok =的； //这是一个字符串
+</code></pre>
+<p>在代码运行时，变量的数据类型是由JS引擎根据=右边变量值的数据类型来判断的，运行完毕之后，变量就确定了数据类型 JavaScript拥有动态类型，同时也意味着相同的变量可用作不同的类型：</p>
+<pre><code>var x = 6;
+// x为数字
+var x = &quot;Bill&quot;;
+// x为字符串
+</code></pre>
+<h3 id="简单数据类型"><a href="#简单数据类型" class="headerlink" title="简单数据类型"></a>简单数据类型</h3><h3 id="简单数据类型（基本数据类型）"><a href="#简单数据类型（基本数据类型）" class="headerlink" title="简单数据类型（基本数据类型）"></a>简单数据类型（基本数据类型）</h3><p>JavaScript中的简单数据类型及其说明如下：</p>
+<table>
+<thead>
+<tr>
+<th>简单数据类型</th>
+<th>说明</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Number</td>
+<td>数字型，包含整值和浮点值，如21、0.21</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>布尔值类型，如true、 false，等价于1和0</td>
+<td>false</td>
+</tr>
+<tr>
+<td>String</td>
+<td>字符串类型，如“张三”注意js 里面，字符串都带引号</td>
+<td>“”</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>var a; 声明了变量a但是没有给值，此时a =undefinedNull</td>
+<td>undefined</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>var a = null; 声明了变量a为空值</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<h3 id="数字型-Number"><a href="#数字型-Number" class="headerlink" title="数字型 Number"></a>数字型 Number</h3><h4 id="数字型进制"><a href="#数字型进制" class="headerlink" title="数字型进制"></a>数字型进制</h4><ul>
+<li><code>0123</code>: 0 开头表示八进制</li>
+<li><code>0b11</code>: 0b 开头表示二进制</li>
+<li><code>0x11</code>: 0x 开头表示十六进制</li>
+<li>直接打印出来会转化为十进制</li>
+</ul>
+<h4 id="数字型范围"><a href="#数字型范围" class="headerlink" title="数字型范围"></a>数字型范围</h4><pre><code>console.log(Number.MAX_VALUE);
+console.log(Number.MIN_VALUE);
+</code></pre>
+<h4 id="特殊值"><a href="#特殊值" class="headerlink" title="特殊值"></a>特殊值</h4><pre><code>console.log(Infinity);
+console.log(-Infinity);
+console.log(NaN);
+</code></pre>
+<ul>
+<li>Infinity：无穷大</li>
+<li>-Infinity：无穷小</li>
+<li>NaN：Not a number，代表一个非数值。</li>
+</ul>
+<h4 id="isNaN"><a href="#isNaN" class="headerlink" title="isNaN()"></a>isNaN()</h4><p>isNaN 方法用来判断一个变量和或者一个值是数字类型，若不是数字类型则返回 true；否则返回 false。</p>
+<h3 id="字符串型-String"><a href="#字符串型-String" class="headerlink" title="字符串型 String"></a>字符串型 String</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>字符长型可以是引号中的任意文本，其语法为双引号 “” 和单引号 ‘’。</p>
+<h4 id="字符串引号嵌套"><a href="#字符串引号嵌套" class="headerlink" title="字符串引号嵌套"></a>字符串引号嵌套</h4><p>JS可以用单引号嵌套双引号，或者用双引号嵌套单引号（外双内单，外单内双）</p>
+<pre><code>var strmsg= &#39;我是&quot;高帅富&quot;程序员&#39;;
+var strmsg= &quot;我是&#39;高帅富&#39;程序员&quot;;
+</code></pre>
+<h4 id="字符串转义符"><a href="#字符串转义符" class="headerlink" title="字符串转义符"></a>字符串转义符</h4><p>类似HTML里面的特殊字符，字符串中也有特殊字符，我们称之为转义符转义符都是\开头的，常用的转义符及其说明如下：</p>
+<table>
+<thead>
+<tr>
+<th>转义符</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\n</td>
+<td>换行符， n是 newline 的意思</td>
+</tr>
+<tr>
+<td>\</td>
+<td>\</td>
+</tr>
+<tr>
+<td>&#39;</td>
+<td>单引号’</td>
+</tr>
+<tr>
+<td>&quot;</td>
+<td>双引号”</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>tab 缩进</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>空格，b 是 blank 的意思</td>
+</tr>
+</tbody></table>
+<h4 id="获取字符串长度-length"><a href="#获取字符串长度-length" class="headerlink" title="获取字符串长度 length"></a>获取字符串长度 length</h4><pre><code>var str = &#39;hello&#39;;
+console.log(str.length);
+Copy to clipboardErrorCopied
+</code></pre>
+<h4 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h4><p>多个字符串之间可以使用+进行拼接，其拼接方式为 ==字符串+任何类型=拼接之后的新字符串== 拼接前会把与字符串相加的任何类型转成字符串，再拼接成一个新的字符串</p>
+<h4 id="字符串拼接加强"><a href="#字符串拼接加强" class="headerlink" title="字符串拼接加强"></a>字符串拼接加强</h4><p>将字符串和变量相加，以后要更新最终的结果字符串，只需更新变量的值。</p>
+<h3 id="布尔型-Boolean"><a href="#布尔型-Boolean" class="headerlink" title="布尔型 Boolean"></a>布尔型 Boolean</h3><ul>
+<li><p>布尔型有两个值，true 和 false</p>
+</li>
+<li><p>布尔型（true，false）在参与加法时当作 1 和 0 使用</p>
+<p>  console.log(true+1);<br>  // 2<br>  console.log(false+1);<br>  // 1</p>
+</li>
+</ul>
+<h3 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h3><pre><code>console.log(undefined+1); // NaN
+console.log(undefined+NaN); // NaN
+console.log(undefined+true); // NaN
+console.log(undefined+&#39;aaa&#39;); // undefinedaaa
+console.log(undefined+undefined); // NaN
+</code></pre>
+<h3 id="空值-Null"><a href="#空值-Null" class="headerlink" title="空值 Null"></a>空值 Null</h3><pre><code>console.log(null+1); // 1
+console.log(null+undefined); // NaN
+console.log(null+NaN); // NaN
+console.log(null+true); // 1
+console.log(null+&#39;aaa&#39;); // nullaaa
+console.log(null+null); // 0
+</code></pre>
+<h2 id="获取变量数据类型"><a href="#获取变量数据类型" class="headerlink" title="获取变量数据类型"></a>获取变量数据类型</h2><h3 id="typeof-获取变量数据类型"><a href="#typeof-获取变量数据类型" class="headerlink" title="typeof 获取变量数据类型"></a>typeof 获取变量数据类型</h3><pre><code> typeof variable （typeof(variable)） 返回一个字符串，值为该变量的数据类型。
+
+console.log(typeof 1); // number
+console.log(typeof false); // boolean
+console.log(typeof &#39;aaa&#39;);// string
+console.log(typeof undefined);// undefined
+console.log(typeof NaN); // number
+console.log(typeof Infinity); // number
+console.log(typeof null); // object
+console.log(typeof typeof 1); // string
+</code></pre>
+<h3 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h3><p>字面量是在源代码中一个固定的表示法，通俗来说，就是字面量如何表达这个值。</p>
+<ul>
+<li>数字字面量：1、0</li>
+<li>字符串字面量：mphy、aaa</li>
+<li>布尔字面量：true、false</li>
+</ul>
+<h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><h3 id="什么是数据类型转换"><a href="#什么是数据类型转换" class="headerlink" title="什么是数据类型转换"></a>什么是数据类型转换</h3><p>使用表单、prompt获取过来的数据默认是字符串类型的，此时就不能直接简单的进行加法运算，而需要转换变量的数据类型。 通俗来说，就是把一种数据类型的变量转换成另外一种数据类型 我们通常会实现3种方式的转换：</p>
+<ul>
+<li><p>转换为字符串类型</p>
+</li>
+<li><p>转换为数字型</p>
+</li>
+<li><p>转换为布尔型</p>
+<h3 id="转换成字符串的三种方法"><a href="#转换成字符串的三种方法" class="headerlink" title="转换成字符串的三种方法"></a>转换成字符串的三种方法</h3><p>一般用第三种方式，隐式转换。</p>
+</li>
+<li><p>toString() 方法</p>
+</li>
+<li><p>String() 方法</p>
+</li>
+<li><p>加号 + 拼接字符串</p>
+<p>  var num = 12;<br>  console.log(num.toString());<br>  console.log(String(num));<br>  console.log(num + ‘’);</p>
+</li>
+</ul>
+<p>引申：数字字符长转数字</p>
+<pre><code>var str = &#39;123&#39;
+console.log(str - &#39;&#39;);
+</code></pre>
+<h3 id="转换为数字型"><a href="#转换为数字型" class="headerlink" title="转换为数字型"></a>转换为数字型</h3><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>parseInt(str) 函数</td>
+<td>string-&gt;整数型</td>
+<td>parseInt(‘10’)</td>
+</tr>
+<tr>
+<td>parseFloat() 函数</td>
+<td>string-&gt;浮点型</td>
+<td>parseFloat(‘3.14’)</td>
+</tr>
+<tr>
+<td>Number() 强转换函数</td>
+<td>string-&gt;数字型</td>
+<td>Number(‘12’)</td>
+</tr>
+<tr>
+<td>JS 隐式转换</td>
+<td>算术运算符隐式转换为数字型</td>
+<td>‘12’-  0 或 ‘12’ - ‘’ 或 ‘12’*1</td>
+</tr>
+</tbody></table>
+<pre><code>console.log(parseInt(&#39;123&#39;)); // 123
+console.log(parseFloat(&#39;3.14&#39;)); // 3.14
+console.log(&#39;123&#39; - 0); // 123
+console.log(&#39;123&#39; - &#39;&#39;); // 123
+console.log(parseFloat(&#39;999&#39;)); // 999
+console.log(parseInt(&#39;3.14159&#39;)); // 3
+console.log(parseInt(&#39;120px&#39;)); // 120
+console.log(Number(&#39;100&#39;)); // 100
+console.log(Number(&#39;100.32&#39;)); // 100.32
+console.log(Number(&#39;100px&#39;)); // NaN
+console.log(&#39;100px&#39; - &#39;&#39;); // NaN
+</code></pre>
+<p>注意：</p>
+<ol>
+<li>数字字符串（’12.3’，12）之间进行加法运算实际上是字符串的拼接，结果还是字符串；而数字字符串之间的减法运算是算术运算，结果是数字型。</li>
+<li>一个数字字符长和一个数字相乘，结果是算数运算结果，为数字型。</li>
+</ol>
+<pre><code>console.log(&#39;10&#39; + &#39;2&#39;); // 102
+console.log(&#39;10&#39; - &#39;2&#39;); // 8
+console.log(&#39;10&#39; + &#39;3.2&#39;); // 103.2
+console.log(&#39;10&#39; - &#39;3.2&#39;); // 6.8
+console.log(&#39;12&#39;*3); // 36
+</code></pre>
+<h3 id="转换为布尔型"><a href="#转换为布尔型" class="headerlink" title="转换为布尔型"></a>转换为布尔型</h3><p>使用 Boolean() 函数转换。</p>
+<ul>
+<li>转换值为 false：’’, 0, NaN, null, undefined（5个）</li>
+<li>其他的转换值均为 true</li>
+</ul>
+<pre><code>console.log(Boolean(&#39;&#39;)); // false
+console.log(Boolean(0)); // false
+console.log(Boolean(NaN)); // false
+console.log(Boolean(null)); // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean([])); // true
+</code></pre>
+<h2 id="标识符、关键字、保留字"><a href="#标识符、关键字、保留字" class="headerlink" title="标识符、关键字、保留字"></a>标识符、关键字、保留字</h2><h3 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h3><p>标识（zhi）符：就是指开发人员为变量、属性、函数、参数取的名字。标识符不能是关键字或保留字。</p>
+<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>关键字：是指JS本身已经使用了的字，不能再用它们充当变量名、方法名。</p>
+<blockquote>
+<p>包括: break, case, catch, continue, default, delete, do, else, finally. for, function, if, in instanceof, new. return, switch, this, throw, try, typeof, var, void, while, with等。</p>
+</blockquote>
+<h3 id="保留字"><a href="#保留字" class="headerlink" title="保留字"></a>保留字</h3><p>保留字：实际上就是预留的“关键字” ，意思是现在虽然还不是关键字，但是未来可能会成为关键字，同样不能使用它们当变量名或方法名。</p>
+<p>包括: boolean, byte, char, class, const, debugger, double, enum, export, extends fimal, float. goto, implements, import, int, interface, long, mative, package private, protected, public, short, static, super, synchronized, throws, transient volatile等。</p>
+<p>2021/7/26 10:02:53 </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/21/Markdown%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/index/" rel="prev" title="“Markdown语法大全”">
+                  <i class="fa fa-chevron-left"></i> “Markdown语法大全”
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">������</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Insgesamt gezählte Symbole">12k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Insgesamte Lesezeit">11 minuten.</span>
+  </span>
+</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
