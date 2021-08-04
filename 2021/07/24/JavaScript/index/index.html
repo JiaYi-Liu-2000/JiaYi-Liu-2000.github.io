@@ -27,10 +27,12 @@
 <meta property="og:site_name" content="Mr.Liu&#39;s Blog">
 <meta property="og:description" content="（一）初识JSJavaScript历史布兰登艾奇（Brendan Eich， 1961年～）。 神奇的大哥在1995年利用10天完成JavaScript设计。 网景公司最初命名为LiveScript ，后来在与Sun合作之后将其改名为JavaScript.">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6714541-6a51835297a6a080.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp">
 <meta property="article:published_time" content="2021-07-24T06:17:30.000Z">
-<meta property="article:modified_time" content="2021-07-29T13:42:10.011Z">
+<meta property="article:modified_time" content="2021-08-02T14:29:30.891Z">
 <meta property="article:author" content="刘家义">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6714541-6a51835297a6a080.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp">
 
 
 <link rel="canonical" href="http://example.com/2021/07/24/JavaScript/index/">
@@ -119,7 +121,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%88%9D%E8%AF%86JS"><span class="nav-number">1.</span> <span class="nav-text">（一）初识JS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E5%8E%86%E5%8F%B2"><span class="nav-number">1.1.</span> <span class="nav-text">JavaScript历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.2.</span> <span class="nav-text">JavaScript是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">JavaScript的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A7%E8%A1%8CJS%E7%AE%80%E4%BB%8B"><span class="nav-number">1.4.</span> <span class="nav-text">浏览器执行JS简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E4%B8%89%E5%A4%A7%E7%BB%84%E6%88%90"><span class="nav-number">1.5.</span> <span class="nav-text">JS三大组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMAScript"><span class="nav-number">1.5.1.</span> <span class="nav-text">ECMAScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM%E2%80%94%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.5.2.</span> <span class="nav-text">DOM—文档对象模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BOM%E2%80%94%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.5.3.</span> <span class="nav-text">BOM—浏览器对象模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="nav-number">1.6.</span> <span class="nav-text">JS 初体验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-%E6%B3%A8%E9%87%8A"><span class="nav-number">1.7.</span> <span class="nav-text">JS 注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.8.</span> <span class="nav-text">JS输入输出语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">（二）变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9E%E8%B4%A8"><span class="nav-number">2.1.</span> <span class="nav-text">变量的实质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="nav-number">2.2.</span> <span class="nav-text">变量的声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F"><span class="nav-number">2.3.</span> <span class="nav-text">声明变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.4.</span> <span class="nav-text">变量的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E8%B5%8B%E5%80%BC"><span class="nav-number">2.5.</span> <span class="nav-text">更新赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E5%A3%B0%E6%98%8E%E5%A4%9A%E4%B8%AA%E5%8F%98%E9%87%8F"><span class="nav-number">2.6.</span> <span class="nav-text">同时声明多个变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E4%B8%8D%E8%B5%8B%E5%80%BC"><span class="nav-number">2.7.</span> <span class="nav-text">声明不赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E8%BE%93%E5%87%BA"><span class="nav-number">2.8.</span> <span class="nav-text">直接输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%A3%B0%E6%98%8E%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC"><span class="nav-number">2.9.</span> <span class="nav-text">不声明直接赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="nav-number">2.10.</span> <span class="nav-text">命名规范</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">（三）数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">数据类型概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.1.</span> <span class="nav-text">为什么需要数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.2.</span> <span class="nav-text">变量的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.3.</span> <span class="nav-text">简单数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%89"><span class="nav-number">3.1.4.</span> <span class="nav-text">简单数据类型（基本数据类型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9E%8B-Number"><span class="nav-number">3.1.5.</span> <span class="nav-text">数字型 Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9E%8B%E8%BF%9B%E5%88%B6"><span class="nav-number">3.1.5.1.</span> <span class="nav-text">数字型进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9E%8B%E8%8C%83%E5%9B%B4"><span class="nav-number">3.1.5.2.</span> <span class="nav-text">数字型范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%80%BC"><span class="nav-number">3.1.5.3.</span> <span class="nav-text">特殊值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isNaN"><span class="nav-number">3.1.5.4.</span> <span class="nav-text">isNaN()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9E%8B-String"><span class="nav-number">3.1.6.</span> <span class="nav-text">字符串型 String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">3.1.6.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BC%95%E5%8F%B7%E5%B5%8C%E5%A5%97"><span class="nav-number">3.1.6.2.</span> <span class="nav-text">字符串引号嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E4%B9%89%E7%AC%A6"><span class="nav-number">3.1.6.3.</span> <span class="nav-text">字符串转义符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6-length"><span class="nav-number">3.1.6.4.</span> <span class="nav-text">获取字符串长度 length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="nav-number">3.1.6.5.</span> <span class="nav-text">字符串拼接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5%E5%8A%A0%E5%BC%BA"><span class="nav-number">3.1.6.6.</span> <span class="nav-text">字符串拼接加强</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E5%9E%8B-Boolean"><span class="nav-number">3.1.7.</span> <span class="nav-text">布尔型 Boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Undefined"><span class="nav-number">3.1.8.</span> <span class="nav-text">Undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E5%80%BC-Null"><span class="nav-number">3.1.9.</span> <span class="nav-text">空值 Null</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">获取变量数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof-%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.1.</span> <span class="nav-text">typeof 获取变量数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="nav-number">3.2.2.</span> <span class="nav-text">字面量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">数据类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.3.1.</span> <span class="nav-text">什么是数据类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">3.3.2.</span> <span class="nav-text">转换成字符串的三种方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97%E5%9E%8B"><span class="nav-number">3.3.3.</span> <span class="nav-text">转换为数字型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B8%83%E5%B0%94%E5%9E%8B"><span class="nav-number">3.3.4.</span> <span class="nav-text">转换为布尔型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6%E3%80%81%E5%85%B3%E9%94%AE%E5%AD%97%E3%80%81%E4%BF%9D%E7%95%99%E5%AD%97"><span class="nav-number">3.4.</span> <span class="nav-text">标识符、关键字、保留字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-number">3.4.1.</span> <span class="nav-text">标识符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.4.2.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%9D%E7%95%99%E5%AD%97"><span class="nav-number">3.4.3.</span> <span class="nav-text">保留字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.</span> <span class="nav-text">操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">3.5.1.</span> <span class="nav-text">一元运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%A2%9E-%E9%80%92%E5%87%8F%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.1.1.</span> <span class="nav-text">递增&#x2F;递减操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E9%80%92%E5%A2%9E%E4%B8%8E%E5%90%8E%E7%BD%AE%E9%80%92%E5%A2%9E%E5%B0%8F%E7%BB%93"><span class="nav-number">3.5.1.2.</span> <span class="nav-text">前置递增与后置递增小结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E5%85%83%E5%8A%A0%E5%92%8C%E5%87%8F"><span class="nav-number">3.5.1.3.</span> <span class="nav-text">一元加和减</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.2.</span> <span class="nav-text">位操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E9%9D%9E"><span class="nav-number">3.5.2.1.</span> <span class="nav-text">按位非</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E4%B8%8E"><span class="nav-number">3.5.2.2.</span> <span class="nav-text">按位与</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E6%88%96"><span class="nav-number">3.5.2.3.</span> <span class="nav-text">按位或</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E5%BC%82%E6%88%96"><span class="nav-number">3.5.2.4.</span> <span class="nav-text">按位异或</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A6%E7%A7%BB"><span class="nav-number">3.5.2.5.</span> <span class="nav-text">左移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%B3%E7%A7%BB"><span class="nav-number">3.5.2.6.</span> <span class="nav-text">右移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.3.</span> <span class="nav-text">布尔操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E9%9D%9E"><span class="nav-number">3.5.3.1.</span> <span class="nav-text">逻辑非</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E"><span class="nav-number">3.5.3.2.</span> <span class="nav-text">逻辑与</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E6%88%96"><span class="nav-number">3.5.3.3.</span> <span class="nav-text">逻辑或</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%98%E6%80%A7%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.4.</span> <span class="nav-text">乘性操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%98%E6%B3%95%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.4.1.</span> <span class="nav-text">乘法操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%99%A4%E6%B3%95%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.4.2.</span> <span class="nav-text">除法操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%96%E6%A8%A1%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.4.3.</span> <span class="nav-text">取模操作符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.5.</span> <span class="nav-text">指数操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E6%80%A7%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.6.</span> <span class="nav-text">加性操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.6.1.</span> <span class="nav-text">加法操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%8F%E6%B3%95%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.6.2.</span> <span class="nav-text">减法操作符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.7.</span> <span class="nav-text">关系操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E7%AD%89%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.8.</span> <span class="nav-text">相等操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AD%89%E4%BA%8E%E5%92%8C%E4%B8%8D%E7%AD%89%E4%BA%8E"><span class="nav-number">3.5.8.1.</span> <span class="nav-text">等于和不等于</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E7%AD%89%E5%92%8C%E4%B8%8D%E5%85%A8%E7%AD%89"><span class="nav-number">3.5.8.2.</span> <span class="nav-text">全等和不全等</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.6.</span> <span class="nav-text">语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.6.1.</span> <span class="nav-text">if语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while"><span class="nav-number">3.6.2.</span> <span class="nav-text">while</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#break-%E4%B8%8E-continue"><span class="nav-number">3.6.3.</span> <span class="nav-text">break 与 continue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#do%E2%80%A6while"><span class="nav-number">3.6.4.</span> <span class="nav-text">do…while</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for%E2%80%A6in"><span class="nav-number">3.6.5.</span> <span class="nav-text">for…in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for%E2%80%A6of"><span class="nav-number">3.6.6.</span> <span class="nav-text">for…of</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.6.7.</span> <span class="nav-text">标签语句</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%88%9D%E8%AF%86JS"><span class="nav-number">1.</span> <span class="nav-text">（一）初识JS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E5%8E%86%E5%8F%B2"><span class="nav-number">1.1.</span> <span class="nav-text">JavaScript历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.2.</span> <span class="nav-text">JavaScript是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">JavaScript的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A7%E8%A1%8CJS%E7%AE%80%E4%BB%8B"><span class="nav-number">1.4.</span> <span class="nav-text">浏览器执行JS简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E4%B8%89%E5%A4%A7%E7%BB%84%E6%88%90"><span class="nav-number">1.5.</span> <span class="nav-text">JS三大组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMAScript"><span class="nav-number">1.5.1.</span> <span class="nav-text">ECMAScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM%E2%80%94%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.5.2.</span> <span class="nav-text">DOM—文档对象模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BOM%E2%80%94%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.5.3.</span> <span class="nav-text">BOM—浏览器对象模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="nav-number">1.6.</span> <span class="nav-text">JS 初体验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-%E6%B3%A8%E9%87%8A"><span class="nav-number">1.7.</span> <span class="nav-text">JS 注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.8.</span> <span class="nav-text">JS输入输出语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">（二）变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9E%E8%B4%A8"><span class="nav-number">2.1.</span> <span class="nav-text">变量的实质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="nav-number">2.2.</span> <span class="nav-text">变量的声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F"><span class="nav-number">2.3.</span> <span class="nav-text">声明变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.4.</span> <span class="nav-text">变量的初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E8%B5%8B%E5%80%BC"><span class="nav-number">2.5.</span> <span class="nav-text">更新赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E5%A3%B0%E6%98%8E%E5%A4%9A%E4%B8%AA%E5%8F%98%E9%87%8F"><span class="nav-number">2.6.</span> <span class="nav-text">同时声明多个变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E4%B8%8D%E8%B5%8B%E5%80%BC"><span class="nav-number">2.7.</span> <span class="nav-text">声明不赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E8%BE%93%E5%87%BA"><span class="nav-number">2.8.</span> <span class="nav-text">直接输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%A3%B0%E6%98%8E%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC"><span class="nav-number">2.9.</span> <span class="nav-text">不声明直接赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="nav-number">2.10.</span> <span class="nav-text">命名规范</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">（三）数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">数据类型概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.1.</span> <span class="nav-text">为什么需要数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.2.</span> <span class="nav-text">变量的数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.3.</span> <span class="nav-text">简单数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%89"><span class="nav-number">3.1.4.</span> <span class="nav-text">简单数据类型（基本数据类型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9E%8B-Number"><span class="nav-number">3.1.5.</span> <span class="nav-text">数字型 Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9E%8B%E8%BF%9B%E5%88%B6"><span class="nav-number">3.1.5.1.</span> <span class="nav-text">数字型进制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9E%8B%E8%8C%83%E5%9B%B4"><span class="nav-number">3.1.5.2.</span> <span class="nav-text">数字型范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%80%BC"><span class="nav-number">3.1.5.3.</span> <span class="nav-text">特殊值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isNaN"><span class="nav-number">3.1.5.4.</span> <span class="nav-text">isNaN()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9E%8B-String"><span class="nav-number">3.1.6.</span> <span class="nav-text">字符串型 String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">3.1.6.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%BC%95%E5%8F%B7%E5%B5%8C%E5%A5%97"><span class="nav-number">3.1.6.2.</span> <span class="nav-text">字符串引号嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E4%B9%89%E7%AC%A6"><span class="nav-number">3.1.6.3.</span> <span class="nav-text">字符串转义符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6-length"><span class="nav-number">3.1.6.4.</span> <span class="nav-text">获取字符串长度 length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="nav-number">3.1.6.5.</span> <span class="nav-text">字符串拼接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5%E5%8A%A0%E5%BC%BA"><span class="nav-number">3.1.6.6.</span> <span class="nav-text">字符串拼接加强</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E5%9E%8B-Boolean"><span class="nav-number">3.1.7.</span> <span class="nav-text">布尔型 Boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Undefined"><span class="nav-number">3.1.8.</span> <span class="nav-text">Undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E5%80%BC-Null"><span class="nav-number">3.1.9.</span> <span class="nav-text">空值 Null</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">获取变量数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof-%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.1.</span> <span class="nav-text">typeof 获取变量数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="nav-number">3.2.2.</span> <span class="nav-text">字面量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">数据类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.3.1.</span> <span class="nav-text">什么是数据类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E6%88%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">3.3.2.</span> <span class="nav-text">转换成字符串的三种方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97%E5%9E%8B"><span class="nav-number">3.3.3.</span> <span class="nav-text">转换为数字型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B8%83%E5%B0%94%E5%9E%8B"><span class="nav-number">3.3.4.</span> <span class="nav-text">转换为布尔型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6%E3%80%81%E5%85%B3%E9%94%AE%E5%AD%97%E3%80%81%E4%BF%9D%E7%95%99%E5%AD%97"><span class="nav-number">3.4.</span> <span class="nav-text">标识符、关键字、保留字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-number">3.4.1.</span> <span class="nav-text">标识符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">3.4.2.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%9D%E7%95%99%E5%AD%97"><span class="nav-number">3.4.3.</span> <span class="nav-text">保留字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.</span> <span class="nav-text">操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">3.5.1.</span> <span class="nav-text">一元运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%A2%9E-%E9%80%92%E5%87%8F%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.1.1.</span> <span class="nav-text">递增&#x2F;递减操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E9%80%92%E5%A2%9E%E4%B8%8E%E5%90%8E%E7%BD%AE%E9%80%92%E5%A2%9E%E5%B0%8F%E7%BB%93"><span class="nav-number">3.5.1.2.</span> <span class="nav-text">前置递增与后置递增小结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E5%85%83%E5%8A%A0%E5%92%8C%E5%87%8F"><span class="nav-number">3.5.1.3.</span> <span class="nav-text">一元加和减</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.2.</span> <span class="nav-text">位操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E9%9D%9E"><span class="nav-number">3.5.2.1.</span> <span class="nav-text">按位非</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E4%B8%8E"><span class="nav-number">3.5.2.2.</span> <span class="nav-text">按位与</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E6%88%96"><span class="nav-number">3.5.2.3.</span> <span class="nav-text">按位或</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E4%BD%8D%E5%BC%82%E6%88%96"><span class="nav-number">3.5.2.4.</span> <span class="nav-text">按位异或</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A6%E7%A7%BB"><span class="nav-number">3.5.2.5.</span> <span class="nav-text">左移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%B3%E7%A7%BB"><span class="nav-number">3.5.2.6.</span> <span class="nav-text">右移</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.3.</span> <span class="nav-text">布尔操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E9%9D%9E"><span class="nav-number">3.5.3.1.</span> <span class="nav-text">逻辑非</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E"><span class="nav-number">3.5.3.2.</span> <span class="nav-text">逻辑与</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E6%88%96"><span class="nav-number">3.5.3.3.</span> <span class="nav-text">逻辑或</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%98%E6%80%A7%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.4.</span> <span class="nav-text">乘性操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%98%E6%B3%95%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.4.1.</span> <span class="nav-text">乘法操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%99%A4%E6%B3%95%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.4.2.</span> <span class="nav-text">除法操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%96%E6%A8%A1%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.4.3.</span> <span class="nav-text">取模操作符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.5.</span> <span class="nav-text">指数操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E6%80%A7%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.6.</span> <span class="nav-text">加性操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.6.1.</span> <span class="nav-text">加法操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%8F%E6%B3%95%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.6.2.</span> <span class="nav-text">减法操作符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.7.</span> <span class="nav-text">关系操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E7%AD%89%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">3.5.8.</span> <span class="nav-text">相等操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AD%89%E4%BA%8E%E5%92%8C%E4%B8%8D%E7%AD%89%E4%BA%8E"><span class="nav-number">3.5.8.1.</span> <span class="nav-text">等于和不等于</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E7%AD%89%E5%92%8C%E4%B8%8D%E5%85%A8%E7%AD%89"><span class="nav-number">3.5.8.2.</span> <span class="nav-text">全等和不全等</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.6.</span> <span class="nav-text">语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.6.1.</span> <span class="nav-text">if语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while"><span class="nav-number">3.6.2.</span> <span class="nav-text">while</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#break-%E4%B8%8E-continue"><span class="nav-number">3.6.3.</span> <span class="nav-text">break 与 continue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#do%E2%80%A6while"><span class="nav-number">3.6.4.</span> <span class="nav-text">do…while</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for%E2%80%A6in"><span class="nav-number">3.6.5.</span> <span class="nav-text">for…in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for%E2%80%A6of"><span class="nav-number">3.6.6.</span> <span class="nav-text">for…of</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.6.7.</span> <span class="nav-text">标签语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.6.8.</span> <span class="nav-text">switch语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">3.7.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-number">3.7.1.</span> <span class="nav-text">1. 概述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E%E4%B8%8E%E8%B0%83%E7%94%A8"><span class="nav-number">3.8.</span> <span class="nav-text">2. 函数的声明与调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%BD%A2%E5%8F%82%E4%B8%8E%E5%AE%9E%E5%8F%82"><span class="nav-number">3.8.1.</span> <span class="nav-text">3. 形参与实参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AE%9E%E5%8F%82%E4%B8%AA%E6%95%B0%E4%B8%8E%E5%BD%A2%E5%8F%82%E4%B8%AA%E6%95%B0%E4%B8%8D%E5%8C%B9%E9%85%8D%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">3.8.2.</span> <span class="nav-text">4. 实参个数与形参个数不匹配的情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%A3%B0%E6%98%8E%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">3.8.3.</span> <span class="nav-text">5. 声明函数的三种方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-function-%E5%91%BD%E4%BB%A4"><span class="nav-number">3.8.3.1.</span> <span class="nav-text">5.1 function 命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">3.8.3.2.</span> <span class="nav-text">5.2 函数表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-Function-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="nav-number">3.8.3.3.</span> <span class="nav-text">5.3 Function 构造函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%B3%A8%E6%84%8F"><span class="nav-number">3.8.4.</span> <span class="nav-text">6. 注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-arguments-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.8.5.</span> <span class="nav-text">7. arguments 的使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98"><span class="nav-number">4.</span> <span class="nav-text">变量、作用域与内存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E5%80%BC%E4%B8%8E%E5%BC%95%E7%94%A8%E5%80%BC"><span class="nav-number">4.1.</span> <span class="nav-text">原始值与引用值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7"><span class="nav-number">4.1.1.</span> <span class="nav-text">动态属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E5%80%BC"><span class="nav-number">4.1.2.</span> <span class="nav-text">复制值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0"><span class="nav-number">4.1.3.</span> <span class="nav-text">传递参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.1.4.</span> <span class="nav-text">确定类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%8E%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">4.2.</span> <span class="nav-text">执行上下文与作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE%E5%A2%9E%E5%BC%BA"><span class="nav-number">4.2.1.</span> <span class="nav-text">作用域链增强</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="nav-number">4.2.2.</span> <span class="nav-text">变量声明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="nav-number">4.3.</span> <span class="nav-text">垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E7%90%86"><span class="nav-number">4.3.1.</span> <span class="nav-text">标记清理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0"><span class="nav-number">4.3.2.</span> <span class="nav-text">引用计数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E5%86%85%E5%AD%98"><span class="nav-number">4.3.3.</span> <span class="nav-text">管理内存</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -133,7 +135,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -205,7 +207,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-29 21:42:10" itemprop="dateModified" datetime="2021-07-29T21:42:10+08:00">2021-07-29</time>
+        <time title="修改时间：2021-08-02 22:29:30" itemprop="dateModified" datetime="2021-08-02T22:29:30+08:00">2021-08-02</time>
       </span>
 
   
@@ -215,14 +217,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>12k</span>
+      <span>17k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>11 分钟</span>
+      <span>15 分钟</span>
     </span>
 </div>
 
@@ -843,7 +845,6 @@ while (condition);
 <ul>
 <li><p>for…in 语句用于对数组或者对象的属性进行循环操作。</p>
 </li>
-<li></li>
 <li><p>for … in 循环中的代码每执行一次，就会对数组的元素或者对象的属性进行一次操作。</p>
 <p>  var arr = new Array(1,2,3,4,5);<br>  for (let i in arr) {<br>  console.log(i+’.’);<br>  }</p>
 </li>
@@ -877,6 +878,218 @@ statement
 <li><p>在严格模式中，你不能使用 “let” 作为标签名称。它会抛出一个 SyntaxError（因为 let 是一个保留的标识符）。</p>
 </li>
 </ul>
+<h3 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h3><p>语法</p>
+<pre><code>switch(n)
+&#123;
+case 1:
+? 执行代码块 1
+? break;
+case 2:
+? 执行代码块 2
+? break;
+default:
+?n 与 case 1 和 case 2 不同时执行的代码
+&#125;
+</code></pre>
+<p>工作原理：首先设置表达式 n（通常是一个变量）。随后表达式的值会与结构中的每个 case 的值做比较。如果存在匹配，则与该 case 关联的代码块会被执行。请使用 break 来阻止代码自动地向下一个 case 运行。</p>
+<p>default 关键词<br>请使用 default 关键词来规定匹配不存在时做的事情：</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><p>函数：就是封装了一段可被重复调用执行的代码块。通过此代码块可以实现大量代码的重复使用。 封装：把一个或者多个功能通过函数的方式封装起来，对外只提供一个简单的函数接口。</p>
+<h2 id="2-函数的声明与调用"><a href="#2-函数的声明与调用" class="headerlink" title="2. 函数的声明与调用"></a>2. 函数的声明与调用</h2><pre><code>// 声明
+function funcName(params) &#123;
+// function statements
+&#125;
+funcName(params);
+// 调用
+</code></pre>
+<h3 id="3-形参与实参"><a href="#3-形参与实参" class="headerlink" title="3. 形参与实参"></a>3. 形参与实参</h3><p>声明时传入的为形参，调用时传入的为实参。</p>
+<h3 id="4-实参个数与形参个数不匹配的情况"><a href="#4-实参个数与形参个数不匹配的情况" class="headerlink" title="4. 实参个数与形参个数不匹配的情况"></a>4. 实参个数与形参个数不匹配的情况</h3><table>
+<thead>
+<tr>
+<th>参数个数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>形参和实参个数相等</td>
+<td>输出正确结果</td>
+</tr>
+<tr>
+<td>实参个数多于形参</td>
+<td>只取到形参的个数</td>
+</tr>
+<tr>
+<td>实参个数少于形参</td>
+<td>多的形参定义为undefined，结果为NaN</td>
+</tr>
+</tbody></table>
+<pre><code>function sum(num1, num2) &#123;
+console.log(num1 + num2);
+&#125;
+sum(100, 200); // 300, 形参和实参个数相等，输出正确结果
+sum(100, 400, 500, 700); // 500, 实参个数多于形参，只取到形参的个数
+sum(200); // NaN, 实参个数少于形参，多的形参定义为undefined，结果为NaN
+</code></pre>
+<p>在JavaScript中，形参的默认值是 undefined。</p>
+<h3 id="5-声明函数的三种方法"><a href="#5-声明函数的三种方法" class="headerlink" title="5. 声明函数的三种方法"></a>5. 声明函数的三种方法</h3><h4 id="5-1-function-命令"><a href="#5-1-function-命令" class="headerlink" title="5.1 function 命令"></a>5.1 function 命令</h4><pre><code>function funcName(params) &#123;
+// function statements
+&#125;
+</code></pre>
+<h4 id="5-2-函数表达式"><a href="#5-2-函数表达式" class="headerlink" title="5.2 函数表达式"></a>5.2 函数表达式</h4><p>const funcName = function(params) {<br>    // function statements<br>}</p>
+<h4 id="5-3-Function-构造函数"><a href="#5-3-Function-构造函数" class="headerlink" title="5.3 Function 构造函数"></a>5.3 Function 构造函数</h4><pre><code>const add = new Function(
+&#39;x&#39;,
+&#39;y&#39;,
+return &#39;x + y&#39;
+);
+</code></pre>
+<h3 id="6-注意"><a href="#6-注意" class="headerlink" title="6. 注意"></a>6. 注意</h3><p>函数未指定返回值则默认返回 undefined</p>
+<h3 id="7-arguments-的使用"><a href="#7-arguments-的使用" class="headerlink" title="7. arguments 的使用"></a>7. arguments 的使用</h3><pre><code>arguments 是所有JS函数内置的对象，但也只有函数具有。
+
+function test() &#123;
+return arguments;
+&#125;
+console.log(test(1,2,3,4));
+</code></pre>
+<p>输出：</p>
+<pre><code>Arguments(4) [1, 2, 3, 4, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+</code></pre>
+<p>函数的 arguments 是一种伪数组：</p>
+<ul>
+<li>具有数组的 length 属性</li>
+<li>按照索引方式进行存储</li>
+<li>没有真正数组的一些方法 pop()、push()</li>
+</ul>
+<h1 id="变量、作用域与内存"><a href="#变量、作用域与内存" class="headerlink" title="变量、作用域与内存"></a>变量、作用域与内存</h1><h2 id="原始值与引用值"><a href="#原始值与引用值" class="headerlink" title="原始值与引用值"></a>原始值与引用值</h2><ul>
+<li>原始值就是最简单的数据</li>
+<li>引用值则是由多个值构成的对象</li>
+</ul>
+<h3 id="动态属性"><a href="#动态属性" class="headerlink" title="动态属性"></a>动态属性</h3><p>原始值和引用值的定义方式很类似，都是创建一个变量，然后赋值。<br>对于引用值而言，可以随时添加、修改和删除其属性和方法。<br>不能给基本类型的值添加属性。</p>
+<pre><code>var person = new Object();
+person.name = &#39;张三&#39;;
+alert(person.name); //张三
+</code></pre>
+<hr>
+<pre><code>var person2 = &quot;张三&quot;;
+person2.name = &#39;李四&#39;;
+alert(person2.name);//undefined
+</code></pre>
+<h3 id="复制值"><a href="#复制值" class="headerlink" title="复制值"></a>复制值</h3><ul>
+<li>基础类型将内容直接存储在栈中（大小固定位置连续的存储空间），记录的是该数据类型的值，即直接访问，基础类型赋值是复制（copy）</li>
+<li>复杂类型将内容存储在堆中，堆所对应的栈中记录的是指针（堆的地址），外部访问时先引出地址，再通过地址去找到值所存放的位置。复杂类型赋值是地址引用。</li>
+</ul>
+<h3 id="传递参数"><a href="#传递参数" class="headerlink" title="传递参数"></a>传递参数</h3><p>js是按值传递的<br>js中所有函数的参数都是按值传递。把函数外部的值复制给函数内部的参数，就和把值从一个变量复制到另一个变量一样。<br>访问变量：按值访问和引用访问！ 参数只能是按值传递！！！</p>
+<p>基本数据类型<br>    function addNum(num) {<br>    num = num + 10;<br>    return num;<br>    }</p>
+<pre><code>var count = 20;
+var result = addNum(count); 
+
+console.log(count + &#39;|&#39; + result); //20|30 
+</code></pre>
+<p>引用数据类型<br>    function setName(obj) {<br>    obj.name = ‘Tina’;<br>    return obj;<br>    }</p>
+<pre><code>var lastObj = new Object();
+lastObj.name = &#39;Lucy&#39;;
+
+var newObj = setName(lastObj);
+console.log(lastObj.name + &#39;|&#39; + newObj.name); //Tina|Tina //这里刚开始会有疑惑
+</code></pre>
+<p>最后一个例子就可以明白为啥是传值了<br>    //数组<br>    function setArray(arr) {<br>    arr[0] = 1;<br>    var arr = new Array(); //这里的地址改变了<br>    arr[0] = 6;<br>    return arr;<br>    }</p>
+<pre><code>var lastArr = new Array();
+lastArr[0] = 0;
+var newArr = setArray(lastArr);
+console.log(lastArr[0] + &#39;|&#39; + newArr[0]); // 1|6
+
+//对象
+function setNameAgain(obj) &#123;
+obj.name = &#39;aaa&#39;;
+var obj = new Object(); // 如果是按引用传递的,此处传参进来obj应该被重新引用新的内存单元
+obj.name = &#39;ccc&#39;;
+return obj;
+&#125;
+
+var person = new Object();
+person.name = &#39;bbb&#39;;
+var newPerson = setNameAgain(person);
+console.log(person.name + &#39; | &#39; + newPerson.name); //aaa | ccc
+</code></pre>
+<p>在向参数传递基本类型的时候，被传递的值会被复制给一个局部变量（arguments对象中的一个元素）。<br>在向参数传递引用类型的值时，会把这个值在内存中的地址复制给一个局部变量，因此这个局部变量的变化会反映在函数的外部！<br>重点时需要搞清楚引用类型的地址与指向地址的指针！！！</p>
+<h3 id="确定类型"><a href="#确定类型" class="headerlink" title="确定类型"></a>确定类型</h3><p>typeof</p>
+<pre><code>   var fn = function(n)&#123;
+  console.log(n);
+   &#125;
+   var str = &#39;string&#39;;
+   var arr = [1,2,3];
+   var obj = &#123;
+   a:123,
+   b:456
+   &#125;;
+   var num = 1;
+   var b = true;
+   var n = null;   var u = undefined;
+   //方法一使用typeof方法。
+   console.log(typeof str);//string
+   console.log(typeof arr);//object
+   console.log(typeof obj);//object
+   console.log(typeof num);//number
+   console.log(typeof b);//boolean
+   console.log(typeof n);//null是一个空的对象
+   console.log(typeof u);//undefined
+   console.log(typeof fn);//function
+</code></pre>
+<p>instanceof</p>
+<pre><code> var o = &#123; 
+   &#39;name&#39;:&#39;lee&#39;
+ &#125;;
+ var a = [&#39;reg&#39;,&#39;blue&#39;];
+ console.log(o instanceof Object);// true
+ console.log(a instanceof Array);//  true
+ console.log(o instanceof Array);//  false
+</code></pre>
+<p>注意：instaceof只可以用来判断数组和对象，不能判断string和boolean类型</p>
+<h2 id="执行上下文与作用域"><a href="#执行上下文与作用域" class="headerlink" title="执行上下文与作用域"></a>执行上下文与作用域</h2><h3 id="作用域链增强"><a href="#作用域链增强" class="headerlink" title="作用域链增强"></a>作用域链增强</h3><h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><p>1.使用var对函数作用域声明</p>
+<p>在使用var声明变量时，变量会被自动添加到最接近对上下文。<br>如果变量未经声明就被初始化了，那么它就会自动被添加到全局上下文</p>
+<p>2.使用let的块级作用域声明</p>
+<p>只在块级作用域内生效</p>
+<pre><code>var a=1
+if(true)&#123;
+let a=2
+&#125;
+console.log(a)
+// 1
+</code></pre>
+<p>块级作用域内只能够拿到该作用域内声明的let变量，外部被忽略</p>
+<pre><code>var a=&#39;博主好帅&#39;
+if(true)&#123;
+a=&#39;博主不帅&#39;
+let a
+&#125;
+// 报错
+</code></pre>
+<h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>Javascript具有自动垃圾收集机制，周期性地回收那些不再使用的变量，并释放其占用的内存。</p>
+<h3 id="标记清理"><a href="#标记清理" class="headerlink" title="标记清理"></a>标记清理</h3><p>这是Javascript中最常用的垃圾收集方式，当变量进入环境时，将其标记为“进入环境”，离开环境时，标记为“离开环境”。理论上，不可以回收标记为“进入环境”的变量。</p>
+<p>可以使用任何方式来标记变量。比如，可以通过翻转某个特殊的位来记录一个变量何时进入环境，或者使用一个“进入环境的”变量列表及一个“离开环境的”变量列表来跟踪哪个变量发生了变化。说到底，如何标记变量其实并不重要，关键在于采取什么策略。</p>
+<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>不太常见，跟踪记录每个值被引用的次数。<br>当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是1。如果同一个值又被赋给另一个变量，则该值的引用次数加1。相反，如果包含对这个值引用的变量又取得了另外一个值或当它们的生命期结束的时候，要给它们所指向的对象的引用计数减1。当这个值的引用次数变成0 时，则说明没有办法再访问这个值了，因而就可以将其占用的内存空间回收回来。</p>
+<pre><code>var a = new Cat(); // 1
+var b = a; // 2
+var c = b; // 3
+b = new Dog(); // 2
+c = new Fox(); // 1
+a = new Object(); // 0
+</code></pre>
+<p>这样看起来，引用计数法似乎没什么问题，然而，当遇到循环引用时，就跪了。。。</p>
+<pre><code>var a = new Object(); //a指向的Object的引用次数+1
+var b = new Object(); //b指向的Object的引用次数+1
+a.another = b; //b指向的Object的引用次数+1
+b.another = a; //a指向的Object的引用次数+1
+</code></pre>
+<p> <img src="https://upload-images.jianshu.io/upload_images/6714541-6a51835297a6a080.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp" alt="avatar"><br>此时，两个对象的引用次数都为2，用于都不会变为0，永远都不会被GC，浪费内存。<br>由于引用计数存在上述问题，因此早在Navigator 4.0就放弃了这一策略，但循环引用带来的麻烦却依然存在。<br>IE 中有一部分对象并不是原生JavaScript 对象。例如，BOM 和DOM 中的对象就是使用C++以COM（Component Object Model，组件对象模型）对象的形式实现的，COM的垃圾回收策略是引用计数法，因此只要涉及到COM对象，就会存在循环引用的问题，举一个例子：</p>
+<pre><code>var element = document.getElementById(&quot;some_element&quot;);
+var myObject = new Object();
+myObject.element = element;
+element.someObject = myObject;
+</code></pre>
+<p>IE9 把BOM 和DOM 对象都转换成了真正的JavaScript 对象。这样，就避免了<br>两种垃圾收集算法并存导致的问题。</p>
+<h3 id="管理内存"><a href="#管理内存" class="headerlink" title="管理内存"></a>管理内存</h3><p>由于系统分配给浏览器的内存比较小（比桌面应用小），而内存限制势必会影响网页性能，因此Javascript中，优化内存占用是一个必要的问题，最佳方式就是只保留必要的数据。局部变量会在离开执行环境后自动解除引用，而后被GC，因此我们只需在不再需要某个全局变量时，将其设为null，来解除它对内存的引用（即解除引用dereferencing），适用于大多数全局变量和全局对象的属性。<br>针对上一节的例子，我们可以使用同样的方法：</p>
+<pre><code>myObject.element = null;
+element.someObject = null
+</code></pre>
 
     </div>
 
@@ -890,8 +1103,8 @@ statement
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/07/21/Markdown%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8/index/" rel="prev" title="“Markdown语法大全”">
-                  <i class="fa fa-chevron-left"></i> “Markdown语法大全”
+                <a href="/2021/07/21/%E2%80%9CF0re5t%E5%B8%88%E5%82%85%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%BA%BF%E8%A7%84%E5%88%92%E4%BB%A5%E5%8F%8A%E8%A7%A3%E6%83%91%E2%80%9D/index/" rel="prev" title="“F0re5t师傅前端路线规划以及解惑”">
+                  <i class="fa fa-chevron-left"></i> “F0re5t师傅前端路线规划以及解惑”
                 </a>
             </div>
             <div class="post-nav-item">
@@ -926,13 +1139,13 @@ statement
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">17k</span>
+    <span title="站点总字数">20k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">16 分钟</span>
+    <span title="站点阅读时长">19 分钟</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
